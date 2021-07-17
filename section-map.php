@@ -50,7 +50,7 @@ if ( $my_query->have_posts() ) {
 		
 		
 		if ($plz!="" && $ort!="") {
-			$fl_list .= "\t".'<li class="fl-item" id="fl_'.$i.'" style="display: none;"><span>'.$plz.'</span> '.$ort.'</li>'."\n";
+			$fl_list .= "\t".'<li class="fl-item" id="fl_'.$i.'" style="display: none;"><span>'.$plz.'</span> '.$ort.' | Kreisverband '.$title.'</li>'."\n";
 	
 			$fl_popup .= "<div class=\"fl-popup\" id=\"flp_$i\"><button class=\"fl-popup_close\"><i class=\"fas fa-times-circle\"></i></button>";
 			if ($title!="") 				$fl_popup .= "<strong>$title</strong>";
