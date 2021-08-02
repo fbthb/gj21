@@ -1,6 +1,6 @@
 <?php
-$spenden_text = get_category(get_theme_mod('spenden_text'));
-$spenden_text2 = get_category(get_theme_mod('spenden_text2'));
+$spenden_text = get_theme_mod('spenden_text');
+$spenden_text2 = get_theme_mod('spenden_text2');
 ?>
 	<section id="spenden" class="homesection">
 		<h2>Spenden</h2>
