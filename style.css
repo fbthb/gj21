@@ -1266,7 +1266,9 @@ body.single-event ul.eo-event-meta li i {
 	color: rgb(var(--lightgreen));
 }
 
-
+.tribe-events {
+	padding-top: 300px;
+}
 
 
 /* ================================================== */
