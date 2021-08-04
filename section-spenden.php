@@ -1,6 +1,7 @@
 <?php
 $spenden_text = get_theme_mod('spenden_text');
 $spenden_text2 = get_theme_mod('spenden_text2');
+$gliederung_text = get_theme_mod('gliederung_text');
 ?>
 	<section id="spenden" class="homesection">
 		<h2>Spenden</h2>
@@ -15,7 +16,7 @@ $spenden_text2 = get_theme_mod('spenden_text2');
             <input type="hidden" name="cmd" value="_donations">
             <input type="hidden" name="business" value="<?=get_theme_mod('spenden_paypal')?>">
             <input type="hidden" name="lc" value="DE">
-            <input type="hidden" name="item_name" value="Grüne Jugend">
+            <input type="hidden" name="item_name" value="GRÜNE JUGEND<?php if($gliederung_text!="") echo " ".$gliederung_text?>">
             <input type="hidden" name="currency_code" value="EUR">
             <input type="hidden" name="no_note" value="0">
             <input type="hidden" name="charset" value="utf-8">
