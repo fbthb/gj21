@@ -548,7 +548,7 @@ function your_theme_new_customizer_settings($wp_customize) {
 		    array(
 		        'label'    => __( 'PayPal-Account', 'gj21' ),
 		        'section'  => 'spenden_options',
-		        'description' => 'Wenn ein PayPal-Account angegben ist, erscheint das Spendenformular.',
+		        'description' => 'Wenn ein PayPal-Account angegeben ist, erscheint das Spendenformular. Trage die zugehörige Mail-Adresse ein.',
 		        'type'     => 'text'
 		    )
 	    )
