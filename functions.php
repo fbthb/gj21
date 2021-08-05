@@ -152,13 +152,5 @@ function shapeSpace_check_enum($redirect, $request) {
 	else return $redirect;
 }
 
-
-// Disable REST 
-/*add_filter('rest_authentication_errors', function($result) {
-  if (!is_user_logged_in()) {
-    return new WP_Error('rest_API_cannot_access', array( 'status' => rest_authorization_required_code()));
-    return $result;
-  }
-});*/
 	
 ?>

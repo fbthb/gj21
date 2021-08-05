@@ -1,4 +1,16 @@
 <?php
+/*
+add_action( 'after_setup_theme', 'addr_theme_setup' );
+function addr_theme_setup() {
+    add_image_size( 'addr-thumb', 200, 200, true );
+}
+*/
+	
+define('LIBS_DIR', get_bloginfo('stylesheet_directory')."/lib/libs/geoaddress/");
+
+wp_register_style('geoaddress_dicons', LIBS_DIR.'/iconfont/css/geoaddress.css');
+wp_enqueue_style('geoaddress_dicons');
+
 	
 //************ Adressen Post Type ************//
 
@@ -24,7 +36,7 @@ function create_addresses() {
     array(
       'labels' => $labels,
       'public' => true,
-      'menu_icon' => 'dashicons-id-alt',
+      'menu_icon' => 'dashicons-ga-geoaddress',
       'supports' => $supports
     )
   );
@@ -71,7 +83,9 @@ function ag_adr_contact_callback($post)
 	$telefon = isset( $values['ag_adr_contact_telefon'] ) ? esc_html( $values['ag_adr_contact_telefon'][0] ) : '';
     $email = isset( $values['ag_adr_contact_email'] ) ? esc_attr( $values['ag_adr_contact_email'][0] ) : '';
     $web = isset( $values['ag_adr_contact_web'] ) ? esc_attr( $values['ag_adr_contact_web'][0] ) : '';    	
-
+	
+	$hideaddress = isset( $values['ag_adr_contact_hideaddress'] ) ? esc_attr( $values['ag_adr_contact_hideaddress'][0] ) : '';
+	
 	$lat = isset( $values['ag_adr_contact_lat'] ) ? esc_html( $values['ag_adr_contact_lat'][0] ) : '';    
 	$long = isset( $values['ag_adr_contact_long'] ) ? esc_html( $values['ag_adr_contact_long'][0] ) : '';    
      
@@ -79,10 +93,11 @@ function ag_adr_contact_callback($post)
     wp_nonce_field( 'my_meta_box_nonce', 'meta_box_nonce' );
     ?>
     <style>
-	    input { width: 100%; margin-bottom: 20px;}
+	    div#formcontainer div { margin-bottom: 20px;}
+	    input { width: 100%; }
     </style>
     
-    <div style="display: flex; flex-wrap: wrap;">
+    <div id="formcontainer" style="display: flex; flex-wrap: wrap;">
 		<div style="width: 49%; margin-right: 1%;">
 		    <label for="ag_adr_contact_1name">Vorname</label> 
 	        <input type="text" name="ag_adr_contact_1name" id="ag_adr_contact_1name" value="<?php echo $vorname; ?>" />
@@ -118,6 +133,10 @@ function ag_adr_contact_callback($post)
 	        <input type="text" name="ag_adr_contact_ort" id="ag_adr_contact_ort" value="<?php echo $ort; ?>" />
 		</div>
 		
+		<div style="width: 100%;">
+	        <input type="checkbox" name="ag_adr_contact_hideaddress" id="ag_adr_contact_hideaddress" value="on" <?php if($hideaddress=="on") echo "checked='checked'";?> />
+			<label for="ag_adr_contact_hideaddress">Straße, Hausnummer, PLZ und Ort im Kartenpopup ausblenden</label>	        
+		</div>
 		
 		<div style="width: 100%;">
 			<label for="ag_adr_contact_telefon">Telefon (inkl. +49, ohne Vorwahl-0)</label>
@@ -192,14 +211,16 @@ function ag_adr_contact_save( $post_id )
         update_post_meta( $post_id, 'ag_adr_contact_email', wp_kses( $_POST['ag_adr_contact_email'], $allowed ) );
 	if( isset( $_POST['ag_adr_contact_web'] ) )
         update_post_meta( $post_id, 'ag_adr_contact_web', wp_kses( $_POST['ag_adr_contact_web'], $allowed ) );                
-        
+
+        update_post_meta( $post_id, 'ag_adr_contact_hideaddress', wp_kses( $_POST['ag_adr_contact_hideaddress'], $allowed ) );  
+                
 
 	if( isset( $_POST['ag_adr_contact_strasse']) && isset( $_POST['ag_adr_contact_plz']) && isset( $_POST['ag_adr_contact_ort']) ) {
 		$address = $_POST['ag_adr_contact_nr']." ".$_POST['ag_adr_contact_strasse'].", ".$_POST['ag_adr_contact_plz'].", ".$_POST['ag_adr_contact_ort'].", Deutschland";
 		$latlong = geocode($address);
 		
-		$lat = 		$latlong[0];
-		$long =		$latlong[1];                 
+		$lat = 		number_format($latlong[0], 4);
+		$long =		number_format($latlong[1], 4);                 
 		
 		update_post_meta( $post_id, 'ag_adr_contact_lat', wp_kses( $lat, $allowed ) );
 		update_post_meta( $post_id, 'ag_adr_contact_long', wp_kses( $long, $allowed ) );
@@ -212,7 +233,7 @@ function geocode($address){
 	$address = urlencode($address);
 	$adminemail = get_option('admin_email');
 	
-	$url = "https://nominatim.openstreetmap.org/?format=json&addressdetails=1&q={$address}&format=json&limit=1&email={$adminemail}";
+	$url = "https://nominatim.openstreetmap.org/?format=json&q={$address}&format=json&limit=1&email={$adminemail}";
 	
 	// get the json response
 	$resp_json = file_get_contents($url);
