@@ -1,3 +1,6 @@
+<?php
+define('LIBS_DIR', get_bloginfo('stylesheet_directory')."/lib/libs/geoaddress/");
+?>
 <section id="vorort" class="homesection">
 		
 	<link rel="stylesheet" href="<?=LIBS_DIR?>leaflet/leaflet.css" media='all' />
@@ -33,7 +36,8 @@ if ( $my_query->have_posts() ) {
 		$postid = get_the_ID();
 
 		$title = get_the_title();
-
+		$thumb = get_the_post_thumbnail_url($postid, 'medium');
+		
 		$vorname	= get_post_meta( $postid, 'ag_adr_contact_1name', true );
 		$nachname	= get_post_meta( $postid, 'ag_adr_contact_2name', true );
 		$funktion	= get_post_meta( $postid, 'ag_adr_contact_funktion', true );
@@ -45,44 +49,48 @@ if ( $my_query->have_posts() ) {
 		$tellink	= "+".preg_replace("/[^0-9]/", "", $telefon);
 		$email		= get_post_meta( $postid, 'ag_adr_contact_email', true );
 		$web		= get_post_meta( $postid, 'ag_adr_contact_web', true );
+		$hideaddress= get_post_meta( $postid, 'ag_adr_contact_hideaddress', true );
 		$lat		= get_post_meta( $postid, 'ag_adr_contact_lat', true );
 		$long		= get_post_meta( $postid, 'ag_adr_contact_long', true );
 		
 		
-		if ($plz!="" && $ort!="") {
-			$fl_list .= "\t".'<li class="fl-item" id="fl_'.$i.'" style="display: none;"><span>'.$plz.'</span> '.$ort.' | Kreisverband '.$title.'</li>'."\n";
+		if ($lat!="" && $long!="") {
+			$fl_list .= "\t".'<li class="fl-item" id="fl_'.$i.'" style="display: none;"><span>'.$plz.'</span> '.$ort.'</li>'."\n";
 	
 			$fl_popup .= "<div class=\"fl-popup\" id=\"flp_$i\"><button class=\"fl-popup_close\"><i class=\"fas fa-times-circle\"></i></button>";
-			if ($title!="") 				$fl_popup .= "<strong>$title</strong>";
-			if ($title!="" && $vorname!="")	$fl_popup .= "<br>";
-			if ($vorname!="") 				$fl_popup .= $vorname." ";
-			if ($nachname!="") 				$fl_popup .= $nachname;
-			if ($funktion!="") 				$fl_popup .= "<br>".$funktion;
-			if ($strasse!="") 				$fl_popup .= "<br>".$strasse." ";
-			if ($nr!="") 					$fl_popup .= $nr." ";
-			if ($plz!="") 					$fl_popup .= "<br>".$plz." ";
-			if ($ort!="") 					$fl_popup .= $ort;
-			if ($telefon!="") 				$fl_popup .= "<br><a href=\"tel:$tellink\">$telefon</a>";
-			if ($email!="") 				$fl_popup .= "<br><a href=\"mailto:$email\">$email</a>";
-			if ($web!="") 					$fl_popup .= "<br><a href=\"$web\" target=\"_blank\">$web</a>";
+			if ($title!="") 							$fl_popup .= "<strong>$title</strong>";
+			if ($title!="" && $vorname!="")				$fl_popup .= "<br>";
+			if ($vorname!="") 							$fl_popup .= $vorname." ";
+			if ($nachname!="") 							$fl_popup .= $nachname;
+			if ($funktion!="") 							$fl_popup .= "<br>".$funktion;
+			if ($strasse!="" && $hideaddress!="on") 	$fl_popup .= "<br>".$strasse." ";
+			if ($nr!="" && $hideaddress!="on") 			$fl_popup .= $nr." ";
+			if ($plz!="" && $hideaddress!="on") 		$fl_popup .= "<br>".$plz." ";
+			if ($ort!="" && $hideaddress!="on") 		$fl_popup .= $ort;
+			if ($telefon!="") 							$fl_popup .= "<br><a href=\"tel:$tellink\">$telefon</a>";
+			if ($email!="") 							$fl_popup .= "<br><a href=\"mailto:$email\">$email</a>";
+			if ($web!="") 								$fl_popup .= "<br><a href=\"$web\" target=\"_blank\">$web</a>";
 			$fl_popup .= "</div>";
 	
 	
 	
 			$markers .= "L.marker([$lat, $long]).addTo(fg).bindPopup(\"";
-			if ($title!="") 				$markers .= "<strong>$title</strong>";
-			if ($title!="" && $vorname!="")	$markers .= "<br>";
-			if ($vorname!="") 				$markers .= $vorname." ";
-			if ($nachname!="") 				$markers .= $nachname;
-			if ($funktion!="") 				$markers .= "<br>".$funktion;
-			if ($strasse!="") 				$markers .= "<br>".$strasse." ";
-			if ($nr!="") 					$markers .= $nr." ";
-			if ($plz!="") 					$markers .= "<br>".$plz." ";
-			if ($ort!="") 					$markers .= $ort;
-			if ($telefon!="") 				$markers .= "<br><a href='tel:$tellink'>$telefon</a>";
-			if ($email!="") 				$markers .= "<br><a href='mailto:$email'>$email</a>";
-			if ($web!="") 					$markers .= "<br><a href='$web' target='_blank'>$web</a>";
-			$markers .= "\");";
+			if ($thumb!="") 								$markers .= "<img src='$thumb' width='100px' />";
+															$markers .= "<p>";
+			if ($title!="") 								$markers .= "<strong>$title</strong>";
+			if ($title!="" && $vorname!="")					$markers .= "<br>";
+			if ($vorname!="") 								$markers .= $vorname." ";
+			if ($nachname!="") 								$markers .= $nachname;
+			if ($funktion!="") 								$markers .= "<br>".$funktion;
+			if ($strasse!="" && $hideaddress!="on") 		$markers .= "<br>".$strasse." ";
+			if ($nr!="" && $hideaddress!="on") 				$markers .= $nr." ";
+			if ($plz!="" && $hideaddress!="on") 			$markers .= "<br>".$plz." ";
+			if ($ort!="" && $hideaddress!="on") 			$markers .= $ort;
+			if ($telefon!="") 								$markers .= "<br><a href='tel:$tellink'>$telefon</a>";
+			if ($email!="") 								$markers .= "<br><a href='mailto:$email'>$email</a>";
+			if ($web!="") 									$markers .= "<br><a href='$web' target='_blank'>$web</a>";
+															$markers .= "</p>";
+			$markers .= "\");\n";
 			
 			
 			$i++;
