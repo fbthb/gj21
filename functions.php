@@ -152,5 +152,74 @@ function shapeSpace_check_enum($redirect, $request) {
 	else return $redirect;
 }
 
-	
+
+/* Auflistung aller Beiträge einer Kategorie	 */
+function showCatentries($atts){
+extract(shortcode_atts(array(
+"catid" => '1'
+), $atts));
+$temp_query = $wp_query;
+query_posts('showposts=50&cat='.$catid);
+
+ob_start();
+
+while (have_posts()) : the_post();
+echo '<div class="catpost" id="post-';
+the_ID();
+echo '"><ul>';
+
+echo '<li><a href="';
+the_permalink();
+echo '" rel="bookmark" title="';
+the_title();
+echo '">';
+the_title();
+echo '</a></li>';
+
+echo '</ul></div>';
+endwhile;
+wp_reset_query();
+return ob_get_clean();
+}
+
+add_shortcode("showCatentries", "showCatentries");
+
+
+/* Auflistung aller Beiträge einer Kategorie ausführlicher	 */
+function showCatentriesLong($atts){
+extract(shortcode_atts(array(
+"catid" => '1'
+), $atts));
+$temp_query = $wp_query;
+query_posts('showposts=2&cat='.$catid);
+
+while (have_posts()) : the_post();
+echo '<div class="catpost" id="post-';
+the_ID();
+echo '">';
+
+echo '<h3>';
+the_title();
+echo '</h3>';
+
+if (has_post_thumbnail()) {
+echo '<div class="threadimg">';
+the_post_thumbnail('medium');
+echo '</div>';
+}
+
+the_excerpt();
+echo '</div>';
+echo '<div><a href="';
+the_permalink();
+echo '" rel="bookmark" title="';
+the_title();
+echo '">komplette Pressemitteilung lesen</a></div>';
+endwhile;
+wp_reset_query();
+}
+add_shortcode("showCatentriesLong", "showCatentriesLong");
+
+
+
 ?>
