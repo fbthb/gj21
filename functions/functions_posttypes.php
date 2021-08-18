@@ -6,9 +6,9 @@ function addr_theme_setup() {
 }
 */
 	
-define('LIBS_DIR', get_bloginfo('stylesheet_directory')."/lib/libs/geoaddress/");
+define('GEO_DIR', get_bloginfo('stylesheet_directory')."/lib/libs/geoaddress/");
 
-wp_register_style('geoaddress_dicons', LIBS_DIR.'/iconfont/css/geoaddress.css');
+wp_register_style('geoaddress_dicons', GEO_DIR.'/iconfont/css/geoaddress.css');
 wp_enqueue_style('geoaddress_dicons');
 
 	
