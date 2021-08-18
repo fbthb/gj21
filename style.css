@@ -9,7 +9,7 @@ Description: WordPress-Theme für Grüne Jugend Gliederungen. Anleitung unter ht
 Requires at least: 5.3
 Tested up to: 5.8
 Requires PHP: 5.6
-Version: 1.04
+Version: 1.05
 License: none
 License URI: none
 Text Domain: gj21
@@ -19,14 +19,14 @@ Tags: none
 
 /* Fonts and Reset ======================================== */
 
-@import url('/wp-content/themes/gj21/lib/css/fonts.css');
-@import url('/wp-content/themes/gj21/lib/css/normalize.css');
+@import url('./lib/css/fonts.css');
+@import url('./lib/css/normalize.css');
 
 
 /* Variables ======================================== */
 
 :root {
-	--themepath: '/wp-content/themes/gj21/';
+	--themepath: './';
 	
     --darkgreen: 4,89,34;
     --lightgreen: 149,193,31;
@@ -294,7 +294,7 @@ header#siteheader {
 	  left: 0;
 	  width: 100%;
 	  height: 100%;
-	  background: url('/wp-content/themes/gj21/lib/images/header.svg');
+	  background: url('./lib/images/header.svg');
 	  background-repeat: no-repeat;
 	  background-size: cover;
 	  z-index: -1;
@@ -365,7 +365,7 @@ div#hero {
 		left: 0;
 		width: 100%;
 		height: 140%;
-		background-image: url('/wp-content/themes/gj21/lib/images/hero_01.jpg');
+		background-image: url('./lib/images/hero_01.jpg');
 		background-image: var(--bgimg);
 		background-repeat: no-repeat;
 		background-size: cover;
@@ -1271,7 +1271,9 @@ body.single-event ul.eo-event-meta li i {
 	color: rgb(var(--lightgreen));
 }
 
-
+.tribe-events {
+	padding-top: 300px;
+}
 
 
 /* ================================================== */
@@ -1398,11 +1400,15 @@ body.search article a.more {
 form.visual-form-builder fieldset,
 form.vfbp-form {
     clear: both;
-    margin: 15px 0 150px 0;
+    margin: 15px 0 15px 0;
     padding: 0;
     border: 0;
     border-radius: 0;
     background-color: #fff;
+}
+
+form.vfbp-form {
+    margin: 15px 0 150px 0;
 }
 
 form.vfbp-form * {

@@ -1,13 +1,13 @@
 <?php
-define('LIBS_DIR', get_bloginfo('stylesheet_directory')."/lib/libs/geoaddress/");
+define('GEO_DIR', get_bloginfo('stylesheet_directory')."/lib/libs/geoaddress/");
 ?>
 <section id="vorort" class="homesection">
 		
-	<link rel="stylesheet" href="<?=LIBS_DIR?>leaflet/leaflet.css" media='all' />
-	<script src="<?=LIBS_DIR?>leaflet/leaflet.js"></script>
+	<link rel="stylesheet" href="<?=GEO_DIR?>leaflet/leaflet.css" media='all' />
+	<script src="<?=GEO_DIR?>leaflet/leaflet.js"></script>
 	 
-    <link rel="stylesheet" href="<?=LIBS_DIR?>leaflet/locatecontrol/L.Control.Locate.min.css" />
-    <script src="<?=LIBS_DIR?>leaflet/locatecontrol/L.Control.Locate.min.js" ></script>
+    <link rel="stylesheet" href="<?=GEO_DIR?>leaflet/locatecontrol/L.Control.Locate.min.css" />
+    <script src="<?=GEO_DIR?>leaflet/locatecontrol/L.Control.Locate.min.js" ></script>
     
     
 		
@@ -55,7 +55,7 @@ if ( $my_query->have_posts() ) {
 		
 		
 		if ($lat!="" && $long!="") {
-			$fl_list .= "\t".'<li class="fl-item" id="fl_'.$i.'" style="display: none;"><span>'.$plz.'</span> '.$ort.'</li>'."\n";
+			$fl_list .= "\t".'<li class="fl-item" id="fl_'.$i.'" style="display: none;"><span>'.$plz.'</span> '.$ort.' | '.$title.'</li>'."\n";
 	
 			$fl_popup .= "<div class=\"fl-popup\" id=\"flp_$i\"><button class=\"fl-popup_close\"><i class=\"fas fa-times-circle\"></i></button>";
 			if ($title!="") 							$fl_popup .= "<strong>$title</strong>";
@@ -147,4 +147,4 @@ $vorort_text = get_theme_mod('vorort_text');
 		mymap.fitBounds(fg.getBounds());
 	}, 500);	
 
-</script>	
+</script>
