@@ -19,7 +19,7 @@
 			<!-- Get event information, see template: event-meta-event-single.php -->
 			<?php eo_get_template_part( 'event-meta', 'event-single' ); ?>
 					
-			<?php the_post_thumbnail(); ?>
+			<?php the_post_thumbnail( 'large' ); ?>
 		
 			<?php the_content(); ?>
 	

@@ -40,7 +40,7 @@ $classes = $eo_event_loop_args['class'];
 
 			<article class="grid-item <?php echo esc_attr( implode( ' ',$eo_event_classes ) ); ?>" >
 				<a href="<?php echo eo_get_permalink(); ?>">
-				<?php the_post_thumbnail(); ?>
+				<?php the_post_thumbnail( 'large' ); ?>
 				<header>
 					<span class="date"><i class="far fa-calendar"></i> <?php echo eo_get_the_start( $format = 'd.m.Y', ); ?></span>
 					<?php if ( eo_get_the_start( $format = 'G:i', ) != "0:00" ) { ?>

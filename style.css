@@ -1100,6 +1100,10 @@ body.single img.attachment-post-thumbnail {
 	margin-bottom: calc(var(--section-padding-bottom) / 2);
 }
 
+.attachment-large{
+	width: 100%;
+	height: auto;
+}
 
 
 /* Footer ======================================== */
