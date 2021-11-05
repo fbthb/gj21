@@ -1474,12 +1474,19 @@ form.visual-form-builder ul li:before {
 
 form.visual-form-builder ul li input[type=text],
 form.visual-form-builder ul li input[type=tel],
-form.visual-form-builder ul li input[type=email]{
+form.visual-form-builder ul li input[type=email],
+input[type=text],
+input[type=tel],
+input[type=email],
+input[type=date],
+input[type=number],
+textarea {
 	width: 100%;
 	padding: 0.8rem 1rem;
 }
 
-form.visual-form-builder ul li select {
+form.visual-form-builder ul li select,
+select {
 	width: 100%;
 	padding: 0.8rem 1rem;
 	background: #fafafa;
@@ -1487,7 +1494,9 @@ form.visual-form-builder ul li select {
 }
 
 form.visual-form-builder ul li input[type=submit],
-form.vfbp-form div.vfb-fieldType-submit button {
+form.vfbp-form div.vfb-fieldType-submit button,
+input[type=submit],
+button[type=submit] {
 	border: 0;
 	display: inline-block;
 	background: var(--gradient-magenta);
@@ -1502,7 +1511,8 @@ form.vfbp-form div.vfb-fieldType-submit button {
 }
 
 form.visual-form-builder ul li input[type=submit]:hover,
-form.vfbp-form div.vfb-fieldType-submit button:hover {
+form.vfbp-form div.vfb-fieldType-submit button:hover,
+button[type=submit]:hover {
 	background: var(--gradient-green);
 }
 
