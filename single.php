@@ -17,7 +17,7 @@
 		<span class="thedate"><?php the_date(); ?></span><br>		
 		<h1><?php the_title(); ?></h1>
 		
-		<?php the_post_thumbnail(); ?>
+		<?php the_post_thumbnail( 'large' ); ?>
 		<br><br>	
 		<?php the_content(); ?>
 		
