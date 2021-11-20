@@ -67,8 +67,6 @@ $url = get_attachment_url_by_slug('kategorie_'.$cat_slug);
 			<?php
 			endwhile;
 
-			the_posts_navigation();
-
 		else :
 
 			
@@ -77,7 +75,9 @@ $url = get_attachment_url_by_slug('kategorie_'.$cat_slug);
 		?>
 	
 	</section>
-	
+	<?php
+	the_posts_navigation();
+	?>
 	
 <?php if(true === get_theme_mod('show_news_page')) include('section-news.php'); ?>	
 <?php if(true === get_theme_mod('show_positionen_page')) include('section-positionen.php'); ?>	

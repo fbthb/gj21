@@ -1338,6 +1338,23 @@ section#posts article a.more {
 }
 
 
+nav.posts-navigation div div a {
+	display: inline-block;
+	background: var(--gradient-magenta);
+	color: #fff;
+	font-weight: var(--textfont-weight-bold);
+	text-transform: uppercase;
+	padding: 0.2em 0.5em;
+	transform: skewX(-7deg);
+	transform-origin: top left; 
+	transition: all 0.3s;
+	margin-bottom: 10px;
+	margin-right: 10px;
+}
+
+nav.posts-navigation div {
+	display: flex;
+}
 
 
 
