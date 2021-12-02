@@ -1,79 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="3000px"
-   height="458px"
-   viewBox="0 0 3000 458"
-   version="1.1"
-   id="svg13"
-   sodipodi:docname="header.svg"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)">
-  <metadata
-     id="metadata17">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="2880"
-     inkscape:window-height="1526"
-     id="namedview15"
-     showgrid="false"
-     inkscape:zoom="256"
-     inkscape:cx="10.151465"
-     inkscape:cy="457.22677"
-     inkscape:window-x="-11"
-     inkscape:window-y="-11"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg13" />
-  <title
-     id="title2">Path</title>
-  <defs
-     id="defs9">
-    <linearGradient
-       x1="1170.3365"
-       y1="589.98435"
-       x2="0"
-       y2="600.69722"
-       id="linearGradient-1"
-       gradientTransform="scale(2.5633652,0.39011218)"
-       gradientUnits="userSpaceOnUse">
-      <stop
-         stop-color="#95C11F"
-         offset="0%"
-         id="stop4" />
-      <stop
-         stop-color="#045922"
-         offset="100%"
-         id="stop6" />
-    </linearGradient>
-  </defs>
-  <g
-     id="Entwurf-2"
-     transform="translate(0,-0.78333)"
-     style="fill:none;fill-rule:evenodd;stroke:none;stroke-width:1">
-    <polygon
-       id="Path"
-       points="3000,0.7707972 3000,94.565466 0,457.33333 0,0.7707972 "
-       style="fill:url(#linearGradient-1)" />
-  </g>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="3000px" height="458px" viewBox="0 0 3000 458" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Path</title>
+    <defs>
+        <linearGradient x1="100%" y1="50.2426851%" x2="0%" y2="51.1580519%" id="linearGradient-1">
+            <stop stop-color="#95C11F" offset="0%"></stop>
+            <stop stop-color="#045922" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Entwurf-2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <polygon id="Path" fill="url(#linearGradient-1)" points="3000 0 3000 89.646 -1 458 -1 0"></polygon>
+    </g>
 </svg>
