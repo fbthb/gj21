@@ -45,10 +45,10 @@ $classes = $eo_event_loop_args['class'];
 					<span class="date"><i class="far fa-calendar"></i> <?php echo eo_get_the_start( $format = 'd.m.Y', ); ?></span>
 					<?php if ( eo_get_the_start( $format = 'G:i', ) != "0:00" ) { ?>
 					<span class="time"><i class="far fa-clock"></i> <?php echo eo_get_the_start( $format = 'G:i', ); ?></span>				
-					<?php } ?>
+					<?php } ?>
 					<?php if ( eo_get_venue_name() != "" ) { ?>
 					<span class="venue"><i class="fas fa-map-marker-alt"></i> <?php echo eo_get_venue_name(); ?></span>
-					<?php } ?>
+					<?php } ?>
 				</header>
 								
 				<h2><?php the_title(); ?></h2>
