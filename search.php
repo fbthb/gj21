@@ -72,8 +72,11 @@ get_header();
 
 
 	
-<?php include('section-machmit.php'); ?>	
-<?php include('section-spenden.php'); ?>		
+<?php if(true === get_theme_mod('show_news_page')) include('section-news.php'); ?>	
+<?php if(true === get_theme_mod('show_positionen_page')) include('section-positionen.php'); ?>	
+<?php if(true === get_theme_mod('show_machmit_page')) include('section-machmit.php'); ?>	
+<?php if(true === get_theme_mod('show_map_page')) include('section-map.php'); ?>		
+<?php if(true === get_theme_mod('show_spenden_page')) include('section-spenden.php'); ?>	
  
   
 	</div><!--container-->  
