@@ -59,12 +59,10 @@ get_header();
 				</a>
 				<a href="<?=esc_url( get_permalink() )?>" title="Weiterlesen →" class="more">Weiterlesen →</a>
 			</article>
-	<?php
-		} 
 	
-		// Previous/next page navigation.
-		//twenty_twenty_one_the_posts_navigation();
-		?>				
+			<?php }
+	the_posts_navigation();
+	?>
 		</div>
 	</section>
 
