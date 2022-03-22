@@ -43,7 +43,7 @@ $gliederung_text = get_theme_mod('gliederung_text');
 			</div>
                 
             <input type="submit" name="Donate" class="btn btn-yellow" value="Jetzt spenden!">
-            <p><a href="/spenden">Weitere Spendenmöglichkeiten</a></p>
+            <p><a href="<?php echo home_url( '/' ); ?>spenden">Weitere Spendenmöglichkeiten</a></p>
         </form>
         <?php } ?>
 	</section>
