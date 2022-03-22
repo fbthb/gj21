@@ -5,7 +5,6 @@ Template Name: Startseite
 ?>
 <?php
 get_header();
-
 			
 /* Start the Loop */
 while ( have_posts() ) :
@@ -27,35 +26,15 @@ $url = $thumb['0'];
 			<?php the_content(); ?>
 		</div>
 	</section>
-	
+</div>
 <?php
 endwhile; // End of the loop.
 ?>	
-	
-	
 		<?php if(true === get_theme_mod('show_machmit')) include('section-machmit.php'); ?>	
-
-
-
 		<?php if(true === get_theme_mod('show_news')) include('section-news.php'); ?>	
-		
-	
-	
 		<?php if(true === get_theme_mod('show_positionen')) include('section-positionen.php'); ?>
-		
-		
-			
 		<?php if(true === get_theme_mod('show_map')) include('section-map.php'); ?>
-		
-		
-		
 		<?php if(true === get_theme_mod('show_spenden'))  include('section-spenden.php'); ?>
-  
-  
-  
-  
-</div><!--container-->  
-
 
 <?php
 get_footer();
