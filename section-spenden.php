@@ -2,6 +2,10 @@
 $spenden_text = get_theme_mod('spenden_text');
 $spenden_text2 = get_theme_mod('spenden_text2');
 $gliederung_text = get_theme_mod('gliederung_text');
+$spenden_iban = get_theme_mod('spenden_iban');
+$spenden_bic = get_theme_mod('spenden_bic');
+$spenden_bank = get_theme_mod('spenden_bank');
+$spenden_verwendungszweck = get_theme_mod('spenden_verwendungszweck');
 ?>
 	<section id="spenden" class="homesection">
 		<h2>Spenden</h2>
@@ -46,4 +50,13 @@ $gliederung_text = get_theme_mod('gliederung_text');
             <p><a href="<?php echo home_url( '/' ); ?>spenden">Weitere Spendenmöglichkeiten</a></p>
         </form>
         <?php } ?>
+		<?php if(get_theme_mod('spenden_iban')!="") { ?>
+		<p style="text-align: left;"><strong>Spende per Überweisung</strong></p>
+		<p style="text-align: left;">	
+				<?php echo "IBAN: ".$spenden_iban; ?><br/>
+				<?php if($spenden_bic!="") echo "BIC: ".$spenden_bic;?><br />
+				<?php if($spenden_bank!="") echo "Bank: ".$spenden_bank;?><br />
+				<?php if($spenden_verwendungszweck!="") echo $spenden_verwendungszweck;?>	
+		</p>
+		<?php } ?>
 	</section>

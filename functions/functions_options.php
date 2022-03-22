@@ -553,6 +553,67 @@ function your_theme_new_customizer_settings($wp_customize) {
 		    )
 	    )
 	);	
+	// IBAN
+	$wp_customize->add_setting( 'spenden_iban', array(
+		 'default'           => __( '', 'gj21' ),
+		 'sanitize_callback' => 'sanitize_text'
+	) );
+	$wp_customize->add_control( new WP_Customize_Control(
+	    $wp_customize,
+		'spenden_iban',
+		    array(
+		        'label'    => __( 'Spenden-IBAN', 'gj21' ),
+		        'section'  => 'spenden_options',
+				'description' => 'Gib hier die IBAN deiner Gliederung an. Lass dieses Feld leer, wenn du PayPal angibst.',
+		        'type'     => 'text'
+		    )
+	    )
+	);	
+	$wp_customize->add_setting( 'spenden_bic', array(
+		 'default'           => __( '', 'gj21' ),
+		 'sanitize_callback' => 'sanitize_text'
+	) );
+	$wp_customize->add_control( new WP_Customize_Control(
+	    $wp_customize,
+		'spenden_bic',
+		    array(
+		        'label'    => __( 'Spenden-BIC', 'gj21' ),
+		        'section'  => 'spenden_options',
+				'description' => 'Gib hier die BIC deiner Gliederung an. Lass dieses Feld leer, wenn du PayPal angibst.',
+		        'type'     => 'text'
+		    )
+	    )
+	);
+	$wp_customize->add_setting( 'spenden_bank', array(
+		 'default'           => __( '', 'gj21' ),
+		 'sanitize_callback' => 'sanitize_text'
+	) );
+	$wp_customize->add_control( new WP_Customize_Control(
+	    $wp_customize,
+		'spenden_bank',
+		    array(
+		        'label'    => __( 'Spenden-Bank', 'gj21' ),
+		        'section'  => 'spenden_options',
+				'description' => 'Gib hier den Namen der Bank deiner Gliederung an. Lass dieses Feld leer, wenn du PayPal angibst.',
+		        'type'     => 'text'
+		    )
+	    )
+	);	
+	$wp_customize->add_setting( 'spenden_verwendungszweck', array(
+		 'default'           => __( '', 'gj21' ),
+		 'sanitize_callback' => 'sanitize_text'
+	) );
+	$wp_customize->add_control( new WP_Customize_Control(
+	    $wp_customize,
+		'spenden_verwendungszweck',
+		    array(
+		        'label'    => __( 'Spenden-Verwendungszweck', 'gj21' ),
+		        'section'  => 'spenden_options',
+				'description' => 'Gib hier den gewünschten Verwendungszweck an. Hinweis: Gliederungen, die Teilorganisation der Partei sind, müssen Namen und Anschriften aller Spender*innen kennen. Lass dieses Feld leer, wenn du PayPal angibst.',
+		        'type'     => 'text'
+		    )
+	    )
+	);	
 	
 	
 	
