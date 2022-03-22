@@ -13,10 +13,15 @@ get_header();
 		<div class="textcontent">
 		<h2>Seite leider nicht gefunden ...</h2>
 		<?php 
-			
-			get_search_form(); 
+			//this interferes with the search form in the navigation
+			//get_search_form(); 
 
-		?>				
+		?>
+		<form action="<?php echo home_url( '/' ); ?>" method="get">
+    		<label for="search">Suche</label>
+   			<input type="text" name="s" id="search" value="<?php the_search_query(); ?>" />
+    		<input type="submit" value="Suchen"/>
+		</form>
 		</div>
 	</section>
 
