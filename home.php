@@ -26,7 +26,9 @@ $url = $thumb['0'];
 			<?php the_content(); ?>
 		</div>
 	</section>
-</div>
+
+<?php if('page' !== get_option( 'show_on_front' )) echo '</div>' ?>
+
 <?php
 endwhile; // End of the loop.
 ?>	
@@ -36,6 +38,8 @@ endwhile; // End of the loop.
 		<?php if(true === get_theme_mod('show_map')) include('section-map.php'); ?>
 		<?php if(true === get_theme_mod('show_spenden'))  include('section-spenden.php'); ?>
 
+<?php if('page' == get_option( 'show_on_front' )) echo '</div>' ?>
+	
 <?php
 get_footer();
 ?>
